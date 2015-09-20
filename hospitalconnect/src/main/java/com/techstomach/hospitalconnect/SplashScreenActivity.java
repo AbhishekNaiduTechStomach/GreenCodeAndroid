@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.avast.android.dialogs.fragment.SimpleDialogFragment;
+import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
 import org.json.JSONException;
@@ -150,6 +151,7 @@ public class SplashScreenActivity extends Activity {
                 dialogBuilder
                         .withTitle("ERROR")
                         .withMessage(R.string.no_internet_message)
+                        .withMessageColor("#000000")
                         .withButton1Text("CLOSE")
                         .setButton1Click(new View.OnClickListener() {
                             @Override
@@ -159,6 +161,9 @@ public class SplashScreenActivity extends Activity {
                             }
                         })
                         .withDialogColor("#F8F8FF")
+//                        .withDialogColor("#808080")
+                        .withEffect(Effectstype.Shake)
+                        .withIcon(getResources().getDrawable(R.drawable.ic_launcher))
                         .show();
 //                SimpleDialogFragment.createBuilder(this, getSupportFragmentManager()).setMessage(R.string.no_internet_message).show();
 //                this.dialog.setMessage("Internet connection error...");
