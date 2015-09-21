@@ -8,9 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
-import android.widget.Toast;
 
-import com.avast.android.dialogs.fragment.SimpleDialogFragment;
 import com.gitonway.lee.niftymodaldialogeffects.lib.Effectstype;
 import com.gitonway.lee.niftymodaldialogeffects.lib.NiftyDialogBuilder;
 
@@ -22,9 +20,6 @@ import java.io.InputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
-
-import me.drakeet.materialdialog.MaterialDialog;
-
 public class SplashScreenActivity extends Activity {
 
     String now_playing, earned;
@@ -32,7 +27,7 @@ public class SplashScreenActivity extends Activity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_my);
+        setContentView(R.layout.activity_start);
 
         final ImageView imageView = (ImageView) findViewById(R.id.imageDisplay);
         imageView.setBackgroundResource(R.drawable.splash_image_5);

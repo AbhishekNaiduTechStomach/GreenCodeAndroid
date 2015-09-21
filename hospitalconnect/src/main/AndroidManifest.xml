@@ -24,7 +24,8 @@
         </activity>
         <activity
             android:name=".HomeActivity"
-            android:label="@string/home_app_name" >
+            android:label="@string/home_app_name"
+            android:theme="@style/CodeFont">
         </activity>
         <activity
             android:name=".SplashScreenActivity"
