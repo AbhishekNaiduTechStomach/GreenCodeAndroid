@@ -27,7 +27,6 @@ import me.drakeet.materialdialog.MaterialDialog;
 
 public class SplashScreenActivity extends Activity {
 
-    MaterialDialog mMaterialDialog;
     String now_playing, earned;
 
     @Override
@@ -38,26 +37,7 @@ public class SplashScreenActivity extends Activity {
         final ImageView imageView = (ImageView) findViewById(R.id.imageDisplay);
         imageView.setBackgroundResource(R.drawable.splash_image_5);
 
-        /**
-         * Showing splashscreen while making network calls to download necessary
-         * data before launching the app Will use AsyncTask to make http call
-         */
         new PrefetchData().execute();
-
-//        new Handler().postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                final Intent mainIntent = new Intent(SplashScreenActivity.this, HomeActivity.class);
-//                SplashScreenActivity.this.startActivity(mainIntent);
-//                SplashScreenActivity.this.finish();
-//            }
-//        }, 50000);
-
-//        ImageView rocketImage = (ImageView) findViewById(R.id.imageView);
-//        rocketImage.setImageResource(R.drawable.background);
-
-//        AnimationDrawable rocketAnimation = (AnimationDrawable) imageView.getBackground();
-//        rocketAnimation.start();
     }
 
 
@@ -67,30 +47,18 @@ public class SplashScreenActivity extends Activity {
         private boolean connectError = false;
 
         @Override
-        protected void onPreExecute() {
+        protected void onPreExecute()
+        {
             super.onPreExecute();
             Log.i("MYLOG", "onPreExecute....");
-
             this.dialog.setMessage("Loading...");
             this.dialog.show();
-            // before making http calls
         }
 
         @Override
         protected Void doInBackground(Void... arg0)
         {
             Log.i("MYLOG", "doInBackground....");
-
-            /*
-             * Will make http call here This call will download required data
-             * before launching the app
-             * example:
-             * 1. Downloading and storing in SQLite
-             * 2. Downloading images
-             * 3. Fetching and parsing the xml / json
-             * 4. Sending device information to server
-             * 5. etc.,
-             */
 
             String json = getJSONFromUrl("http://api.androidhive.info/game/game_stats.json");
             Log.e("MYLOG: ", "> " + json);
@@ -165,18 +133,11 @@ public class SplashScreenActivity extends Activity {
                         .withEffect(Effectstype.Shake)
                         .withIcon(getResources().getDrawable(R.drawable.ic_launcher))
                         .show();
-//                SimpleDialogFragment.createBuilder(this, getSupportFragmentManager()).setMessage(R.string.no_internet_message).show();
-//                this.dialog.setMessage("Internet connection error...");
-//                this.dialog.show();
             }
         }
 
         public String getJSONFromUrl(String url_address)
         {
-//            InputStream is = null;
-//            JSONObject jObj = null;
-//            String json = "";
-
             // make HTTP request
             try
             {
@@ -190,15 +151,42 @@ public class SplashScreenActivity extends Activity {
                 Log.i("MYLOG", "response = " + response);
 
                 return response;
-//                jObj = new JSONObject(response);
-//                return jObj;
             }
-            catch (Exception e) {
+            catch (Exception e)
+            {
                 e.printStackTrace();
                 Log.i("MYLOG", "exception received = " + e.toString());
             }
 
             return null;
+        }
+    }
+}
+
+
+// ---------------------
+//  REFERENCE
+// ---------------------
+
+//        new Handler().postDelayed(new Runnable() {
+//            @Override
+//            public void run() {
+//                final Intent mainIntent = new Intent(SplashScreenActivity.this, HomeActivity.class);
+//                SplashScreenActivity.this.startActivity(mainIntent);
+//                SplashScreenActivity.this.finish();
+//            }
+//        }, 50000);
+
+//        ImageView rocketImage = (ImageView) findViewById(R.id.imageView);
+//        rocketImage.setImageResource(R.drawable.background);
+
+//        AnimationDrawable rocketAnimation = (AnimationDrawable) imageView.getBackground();
+//        rocketAnimation.start();
+
+
+
+
+
 
 //            try {
 //
@@ -224,8 +212,8 @@ public class SplashScreenActivity extends Activity {
 //
 //            // return JSON String
 //            return jObj;
-        }
-    }
+//        }
+//    }
 
 
 //    public void init(View v) {
@@ -412,4 +400,3 @@ public class SplashScreenActivity extends Activity {
 //
 //        return super.onOptionsItemSelected(item);
 //    }
-}

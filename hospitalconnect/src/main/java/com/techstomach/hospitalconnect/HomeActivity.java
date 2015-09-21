@@ -12,7 +12,6 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_my);
 
-        final ImageView imageView = (ImageView) findViewById(R.id.imageDisplay);
-        imageView.setBackgroundResource(R.drawable.background2);
+        new SimpleEula(this).show();
     }
 }
